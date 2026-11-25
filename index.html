@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Tamim Chowdhury — cinematic car & bike video editor. Automotive montages, motorcycle cuts, motion craft." />
+  <title>Tamim Chowdhury — Video Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="is-loading">
+  <div class="loader" data-loader aria-hidden="true">
+    <div class="loader__inner">
+      <p class="loader__label">Booting edit bay</p>
+      <div class="loader__name" data-loader-name>TAMIM</div>
+      <div class="loader__bar"><span data-loader-bar></span></div>
+      <p class="loader__pct"><span data-loader-pct>0</span>%</p>
+    </div>
+    <div class="loader__shutter" data-shutter></div>
+  </div>
+
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label" data-cursor-label></div>
+  </div>
+  <canvas class="trail" data-trail aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <nav class="nav" data-nav>
+    <a href="#top" class="nav__brand" data-magnetic>
+      <span class="nav__mark">TC</span>
+      <span class="nav__name">TAMIM</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#reel">Reel</a></li>
+      <li><a href="#craft">Craft</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav__cta" data-magnetic>Hire me</a></li>
+    </ul>
+    <button class="nav__toggle" type="button" aria-label="Open menu" data-menu-toggle>
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" data-mobile-menu>
+    <a href="#reel">Reel</a>
+    <a href="#craft">Craft</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Hire me</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" data-hero>
+      <div class="hero__media" data-parallax-slow>
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80"
+        >
+          <source src="https://assets.mixkit.co/videos/35540/35540-720.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__veil"></div>
+        <div class="hero__grid" data-parallax-mid></div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__status">
+          <span class="hero__pulse"></span>
+          Online · Tamim Chowdhury
+        </p>
+        <h1 class="hero__brand" data-hero-brand>TAMIM</h1>
+        <p class="hero__surname">Chowdhury</p>
+        <p class="hero__tagline">
+          Cinematic car &amp; bike montages — redline cuts, apex edits, asphalt poetry.
+        </p>
+        <div class="hero__actions">
+          <a href="#reel" class="btn btn--primary" data-magnetic>Watch reel</a>
+          <a href="#work" class="btn btn--ghost" data-magnetic>View work</a>
+        </div>
+      </div>
+
+      <div class="hero__meta">
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">FPS</span>
+          <span class="hero__meta-value">24 / 60</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Signal</span>
+          <span class="hero__meta-value">4K HDR</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Lat</span>
+          <span class="hero__meta-value" data-mouse-x>00.00</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Lon</span>
+          <span class="hero__meta-value" data-mouse-y>00.00</span>
+        </div>
+      </div>
+
+      <a href="#reel" class="hero__scroll">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </a>
+    </section>
+
+    <div class="marquee" aria-hidden="true" data-marquee>
+      <div class="marquee__track">
+        <span>AFTER EFFECTS</span><span>PREMIERE</span><span>TRANSITIONS</span><span>CARS</span><span>BIKES</span><span>MONTAGE</span><span>GRADE</span><span>RAMP</span><span>VFX</span><span>4K</span>
+        <span>AFTER EFFECTS</span><span>PREMIERE</span><span>TRANSITIONS</span><span>CARS</span><span>BIKES</span><span>MONTAGE</span><span>GRADE</span><span>RAMP</span><span>VFX</span><span>4K</span>
+      </div>
+    </div>
+
+    <section class="reel" id="reel" data-reel>
+      <div class="section-head">
+        <p class="section-eyebrow" data-reveal>01 — Showreel</p>
+        <h2 class="section-title" data-split>Asphalt signal</h2>
+        <p class="section-copy" data-reveal>
+          A kinetic montage of cars, bikes, tunnels, and night drives — cut for speed and feel.
+        </p>
+      </div>
+
+      <div class="reel__pin" data-reel-pin>
+        <div class="reel__stage">
+          <div class="reel__frame" data-reel-frame>
+            <video
+              class="reel__video"
+              controls
+              playsinline
+              poster="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80"
+            >
+              <source src="https://assets.mixkit.co/videos/4136/4136-1080.mp4" type="video/mp4" />
+            </video>
+            <div class="reel__hud">
+              <span>REEL_ASPHALT_26</span>
+              <span>MOTO · AUTO</span>
+            </div>
+            <div class="reel__glow" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="craft" id="craft">
+      <div class="section-head section-head--row">
+        <div>
+          <p class="section-eyebrow" data-reveal>02 — Edit bay</p>
+          <h2 class="section-title" data-split>AE · Transitions</h2>
+        </div>
+        <p class="section-copy" data-reveal>
+          After Effects motion, cinematic wipes, light leaks, and timeline craft —
+          the glue between raw footage and finished cut.
+        </p>
+      </div>
+
+      <div class="craft__tools">
+        <span data-chip>Adobe After Effects</span>
+        <span data-chip>Premiere Pro</span>
+        <span data-chip>DaVinci Resolve</span>
+        <span data-chip>Speed ramps</span>
+        <span data-chip>Optical transitions</span>
+        <span data-chip>Match cuts</span>
+      </div>
+
+      <div class="transitions" data-reveal>
+        <button class="fx" type="button" data-fx="wipe" data-cursor-text="Wipe">
+          <div class="fx__stage">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" alt="" />
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80" alt="" />
+            <div class="fx__mask"></div>
+          </div>
+          <div class="fx__meta">
+            <span class="fx__tag">AE</span>
+            <strong>Linear Wipe</strong>
+          </div>
+        </button>
+
+        <button class="fx" type="button" data-fx="zoom" data-cursor-text="Zoom">
+          <div class="fx__stage">
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80" alt="" />
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=80" alt="" />
+            <div class="fx__mask"></div>
+          </div>
+          <div class="fx__meta">
+            <span class="fx__tag">AE</span>
+            <strong>Smash Zoom</strong>
+          </div>
+        </button>
+
+        <button class="fx" type="button" data-fx="glitch" data-cursor-text="Glitch">
+          <div class="fx__stage">
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80" alt="" />
+            <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=900&q=80" alt="" />
+            <div class="fx__mask"></div>
+          </div>
+          <div class="fx__meta">
+            <span class="fx__tag">AE</span>
+            <strong>Digital Glitch</strong>
+          </div>
+        </button>
+
+        <button class="fx" type="button" data-fx="leak" data-cursor-text="Leak">
+          <div class="fx__stage">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80" alt="" />
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" alt="" />
+            <div class="fx__mask"></div>
+          </div>
+          <div class="fx__meta">
+            <span class="fx__tag">FILM</span>
+            <strong>Light Leak</strong>
+          </div>
+        </button>
+      </div>
+
+      <div class="bay" data-reveal>
+        <article class="bay__card" data-bay>
+          <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80">
+            <source src="https://assets.mixkit.co/videos/50610/50610-720.mp4" type="video/mp4" />
+          </video>
+          <div class="bay__label">
+            <span>01</span>
+            <p>Timeline · Premiere / AE</p>
+          </div>
+        </article>
+        <article class="bay__card" data-bay>
+          <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80">
+            <source src="https://assets.mixkit.co/videos/47208/47208-720.mp4" type="video/mp4" />
+          </video>
+          <div class="bay__label">
+            <span>02</span>
+            <p>Color grade pass</p>
+          </div>
+        </article>
+        <article class="bay__card bay__card--wide" data-bay>
+          <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=80">
+            <source src="https://assets.mixkit.co/videos/50605/50605-720.mp4" type="video/mp4" />
+          </video>
+          <div class="bay__label">
+            <span>03</span>
+            <p>Cursor in the stack — keyframes &amp; effects</p>
+          </div>
+        </article>
+        <article class="bay__card" data-bay>
+          <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1200&q=80">
+            <source src="https://assets.mixkit.co/videos/21546/21546-720.mp4" type="video/mp4" />
+          </video>
+          <div class="bay__label">
+            <span>04</span>
+            <p>Edit bay · dual screen</p>
+          </div>
+        </article>
+        <article class="bay__card" data-bay>
+          <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80">
+            <source src="https://assets.mixkit.co/videos/5381/5381-720.mp4" type="video/mp4" />
+          </video>
+          <div class="bay__label">
+            <span>05</span>
+            <p>Timelapse cut session</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="section-head">
+        <p class="section-eyebrow" data-reveal>02.5 — Pipeline</p>
+        <h2 class="section-title" data-split>How cuts land</h2>
+      </div>
+      <div class="process__line" data-process-line aria-hidden="true"></div>
+      <ol class="process__steps">
+        <li class="process__step" data-process-step>
+          <span class="process__num">01</span>
+          <h3>Select</h3>
+          <p>Pull the hero beats from raw asphalt and engine takes.</p>
+        </li>
+        <li class="process__step" data-process-step>
+          <span class="process__num">02</span>
+          <h3>Cut + AE</h3>
+          <p>Transitions, ramps, and motion graphics that sell the edit.</p>
+        </li>
+        <li class="process__step" data-process-step>
+          <span class="process__num">03</span>
+          <h3>Grade</h3>
+          <p>Night neon, sunset chrome, contrast that feels like film stock.</p>
+        </li>
+        <li class="process__step" data-process-step>
+          <span class="process__num">04</span>
+          <h3>Deliver</h3>
+          <p>Reel-ready exports for social, broadcast, and brand films.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="work" id="work">
+      <div class="section-head section-head--row">
+        <div>
+          <p class="section-eyebrow" data-reveal>03 — Selected work</p>
+          <h2 class="section-title" data-split>Montages</h2>
+        </div>
+        <p class="section-copy" data-reveal>
+          Hover to scrub each cut — cars, bikes, and cinematic road footage.
+        </p>
+      </div>
+
+      <div class="work__track" data-work-grid>
+        <article class="project" data-project>
+          <div class="project__media">
+            <img
+              src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1400&q=80"
+              alt="Night highway drive through light trails"
+              loading="lazy"
+            />
+            <video muted loop playsinline preload="metadata">
+              <source src="https://assets.mixkit.co/videos/27717/27717-720.mp4" type="video/mp4" />
+            </video>
+            <div class="project__overlay">
+              <span class="project__play">Play</span>
+            </div>
+          </div>
+          <div class="project__info">
+            <p class="project__index">01</p>
+            <h3 class="project__title">Night Circuit</h3>
+            <p class="project__meta">Car montage · Night drive · 45s</p>
+          </div>
+        </article>
+
+        <article class="project" data-project>
+          <div class="project__media">
+            <img
+              src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=1400&q=80"
+              alt="Motorcycle rider on open road"
+              loading="lazy"
+            />
+            <video muted loop playsinline preload="metadata">
+              <source src="https://assets.mixkit.co/videos/31974/31974-720.mp4" type="video/mp4" />
+            </video>
+            <div class="project__overlay">
+              <span class="project__play">Play</span>
+            </div>
+          </div>
+          <div class="project__info">
+            <p class="project__index">02</p>
+            <h3 class="project__title">Apex Rider</h3>
+            <p class="project__meta">Bike POV · Edit · 60s</p>
+          </div>
+        </article>
+
+        <article class="project" data-project>
+          <div class="project__media">
+            <img
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80"
+              alt="Red sports car close-up"
+              loading="lazy"
+            />
+            <video muted loop playsinline preload="metadata">
+              <source src="https://assets.mixkit.co/videos/52427/52427-1080.mp4" type="video/mp4" />
+            </video>
+            <div class="project__overlay">
+              <span class="project__play">Play</span>
+            </div>
+          </div>
+          <div class="project__info">
+            <p class="project__index">03</p>
+            <h3 class="project__title">Redline Curve</h3>
+            <p class="project__meta">Sports car · Color · 40s</p>
+          </div>
+        </article>
+
+        <article class="project" data-project>
+          <div class="project__media">
+            <img
+              src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1400&q=80"
+              alt="Motorcycle speeding on asphalt"
+              loading="lazy"
+            />
+            <video muted loop playsinline preload="metadata">
+              <source src="https://assets.mixkit.co/videos/39917/39917-1080.mp4" type="video/mp4" />
+            </video>
+            <div class="project__overlay">
+              <span class="project__play">Play</span>
+            </div>
+          </div>
+          <div class="project__info">
+            <p class="project__index">04</p>
+            <h3 class="project__title">Wheel Pulse</h3>
+            <p class="project__meta">Moto detail · Rhythm cut · 28s</p>
+          </div>
+        </article>
+
+        <article class="project" data-project>
+          <div class="project__media">
+            <img
+              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80"
+              alt="Classic sports car front grille"
+              loading="lazy"
+            />
+            <video muted loop playsinline preload="metadata">
+              <source src="https://assets.mixkit.co/videos/74/74-1080.mp4" type="video/mp4" />
+            </video>
+            <div class="project__overlay">
+              <span class="project__play">Play</span>
+            </div>
+          </div>
+          <div class="project__info">
+            <p class="project__index">05</p>
+            <h3 class="project__title">Chrome Heat</h3>
+            <p class="project__meta">Car commercial · Grade · 30s</p>
+          </div>
+        </article>
+
+        <article class="project" data-project>
+          <div class="project__media">
+            <img
+              src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1400&q=80"
+              alt="Car driving through forest road"
+              loading="lazy"
+            />
+            <video muted loop playsinline preload="metadata">
+              <source src="https://assets.mixkit.co/videos/45312/45312-720.mp4" type="video/mp4" />
+            </video>
+            <div class="project__overlay">
+              <span class="project__play">Play</span>
+            </div>
+          </div>
+          <div class="project__info">
+            <p class="project__index">06</p>
+            <h3 class="project__title">Forest Line</h3>
+            <p class="project__meta">Road film · Montage · 55s</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about__grid">
+        <div class="about__copy">
+          <p class="section-eyebrow" data-reveal>04 — Profile</p>
+          <h2 class="section-title" data-split>Tamim Chowdhury</h2>
+          <p class="about__text" data-reveal>
+            Video editor specializing in cars and bikes — throttle, brake, apex,
+            release. Automotive commercials, motorcycle reels, and cinematic
+            road montages from cold open to final grade.
+          </p>
+          <ul class="about__skills" data-reveal>
+            <li data-skill>After Effects</li>
+            <li data-skill>AE transitions</li>
+            <li data-skill>Car montages</li>
+            <li data-skill>Bike / moto edits</li>
+            <li data-skill>Cinematic grading</li>
+            <li data-skill>Speed ramping</li>
+          </ul>
+        </div>
+
+        <div class="about__panel" data-reveal>
+          <div class="stat" data-stat>
+            <span class="stat__num" data-count="120">0</span>
+            <span class="stat__label">Projects shipped</span>
+          </div>
+          <div class="stat" data-stat>
+            <span class="stat__num" data-count="8">0</span>
+            <span class="stat__label">Years in the bay</span>
+          </div>
+          <div class="stat" data-stat>
+            <span class="stat__num" data-count="40">0</span>
+            <span class="stat__suffix">+</span>
+            <span class="stat__label">Brand partners</span>
+          </div>
+          <div class="about__portrait" data-tilt>
+            <img
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+              alt="Cinematic sports car still"
+              loading="lazy"
+            />
+            <div class="about__portrait-tag">TAMIM CHOWDHURY · EDITOR</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact__inner">
+        <p class="section-eyebrow" data-reveal>05 — Transmission</p>
+        <h2 class="contact__title" data-split>Let's cut something</h2>
+        <p class="contact__copy" data-reveal>
+          Open for car spots, motorcycle reels, trailers, and road montages.
+        </p>
+        <a href="mailto:hello@tamimchowdhury.com" class="contact__mail" data-magnetic data-reveal>
+          hello@tamimchowdhury.com
+        </a>
+        <div class="contact__links" data-reveal>
+          <a href="https://vimeo.com" target="_blank" rel="noopener">Vimeo</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="contact__orbit" aria-hidden="true" data-parallax-fast></div>
+      <div class="floaters" aria-hidden="true">
+        <span data-floater>CUT</span>
+        <span data-floater>RAMP</span>
+        <span data-floater>GRADE</span>
+        <span data-floater>SYNC</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span data-year></span> Tamim Chowdhury · Video Editor</p>
+    <a href="#top">Back to signal</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
