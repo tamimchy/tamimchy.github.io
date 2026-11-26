@@ -160,10 +160,97 @@
     });
   });
 
+  /* ---------- Lightbox player ---------- */
+  const lightbox = document.querySelector("[data-lightbox]");
+  const lightboxVideo = document.querySelector("[data-lightbox-video]");
+  const lightboxTitle = document.querySelector("[data-lightbox-title]");
+  let lightboxLastFocus = null;
+
+  const getClipSrc = (root) => {
+    if (!root) return "";
+    const explicit = root.getAttribute("data-video");
+    if (explicit) return explicit;
+    const videos = root.querySelectorAll("video");
+    const target = videos.length > 1 ? videos[videos.length - 1] : videos[0];
+    if (!target) return "";
+    const source = target.querySelector("source");
+    return source?.getAttribute("src") || target.currentSrc || "";
+  };
+
+  const getClipTitle = (root) => {
+    return (
+      root.querySelector(".project__title")?.textContent?.trim() ||
+      root.querySelector(".bay__label p")?.textContent?.trim() ||
+      root.querySelector(".fx__meta strong")?.textContent?.trim() ||
+      "Portfolio cut"
+    );
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox?.classList.contains("is-open")) return;
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-lightbox-open");
+    if (lightboxVideo) {
+      lightboxVideo.pause();
+      lightboxVideo.removeAttribute("src");
+      lightboxVideo.load();
+    }
+    if (window.__lenis?.start) window.__lenis.start();
+    lightboxLastFocus?.focus?.({ preventScroll: true });
+    lightboxLastFocus = null;
+  };
+
+  const openLightbox = (src, title) => {
+    if (!lightbox || !lightboxVideo || !src) return;
+    lightboxLastFocus = document.activeElement;
+    if (lightboxTitle) lightboxTitle.textContent = title || "Portfolio cut";
+    lightboxVideo.src = src;
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-lightbox-open");
+    if (window.__lenis?.stop) window.__lenis.stop();
+    lightboxVideo.play().catch(() => {});
+    lightbox.querySelector("[data-lightbox-close]")?.focus({ preventScroll: true });
+  };
+
+  lightbox?.querySelectorAll("[data-lightbox-close]").forEach((el) => {
+    el.addEventListener("click", closeLightbox);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+
+  const bindLightboxTrigger = (el) => {
+    el.setAttribute("tabindex", el.getAttribute("tabindex") || "0");
+    el.setAttribute("role", el.getAttribute("role") || "button");
+    if (!el.getAttribute("data-cursor-text")) {
+      el.setAttribute("data-cursor-text", "Play");
+    }
+
+    const openFromEl = () => {
+      openLightbox(getClipSrc(el), getClipTitle(el));
+    };
+
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      openFromEl();
+    });
+
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openFromEl();
+      }
+    });
+  };
+
   /* ---------- Project scrub ---------- */
   document.querySelectorAll("[data-project]").forEach((project) => {
     const video = project.querySelector("video");
     if (!video) return;
+    bindLightboxTrigger(project);
 
     const showPosterFrame = () => {
       try {
@@ -174,6 +261,7 @@
     if (video.readyState >= 1) showPosterFrame();
 
     const play = () => {
+      if (lightbox?.classList.contains("is-open")) return;
       project.classList.add("is-active");
       video.play().catch(() => {});
     };
@@ -189,6 +277,7 @@
     project.addEventListener("focusout", pause);
     project.addEventListener("mousemove", (e) => {
       if (!video.duration || !project.classList.contains("is-active")) return;
+      if (lightbox?.classList.contains("is-open")) return;
       const rect = project.getBoundingClientRect();
       const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
       video.currentTime = ratio * video.duration;
@@ -199,7 +288,9 @@
   document.querySelectorAll("[data-bay]").forEach((card) => {
     const video = card.querySelector("video");
     if (!video) return;
+    bindLightboxTrigger(card);
     card.addEventListener("mouseenter", () => {
+      if (lightbox?.classList.contains("is-open")) return;
       card.classList.add("is-active");
       video.play().catch(() => {});
     });
@@ -213,6 +304,7 @@
   document.querySelectorAll("[data-fx]").forEach((fx) => {
     let timer;
     const videos = fx.querySelectorAll("video");
+    bindLightboxTrigger(fx);
     videos.forEach((video) => {
       const showFrame = () => {
         if (video.readyState >= 1) video.currentTime = 0.12;
@@ -221,6 +313,7 @@
       if (video.readyState >= 1) showFrame();
     });
     const play = () => {
+      if (lightbox?.classList.contains("is-open")) return;
       fx.classList.remove("is-playing");
       void fx.offsetWidth;
       fx.classList.add("is-playing");
@@ -235,7 +328,6 @@
     fx.addEventListener("mouseleave", () => {
       videos.forEach((video) => video.pause());
     });
-    fx.addEventListener("click", play);
   });
 
   /* ---------- Nav hide (class only — never leave GSAP transform on nav) ---------- */
@@ -374,6 +466,7 @@
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
       });
+      window.__lenis = lenis;
 
       lenis.on("scroll", ({ scroll }) => {
         ScrollTrigger.update();

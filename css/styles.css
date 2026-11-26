@@ -54,7 +54,8 @@ body.is-loading {
   overflow: hidden;
 }
 
-body.is-menu-open {
+body.is-menu-open,
+body.is-lightbox-open {
   overflow: hidden;
 }
 
@@ -1785,6 +1786,112 @@ body.has-motion [data-split].is-shown {
   }
 }
 
+/* ---- Lightbox player ---- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: max(1rem, var(--safe-top)) 1rem max(1rem, var(--safe-bottom));
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-out), visibility 0.35s;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 4, 8, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.lightbox__panel {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 100%);
+  max-height: min(92vh, 900px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 1rem 1.15rem;
+  border: 1px solid rgba(45, 226, 197, 0.35);
+  background:
+    linear-gradient(180deg, rgba(12, 16, 24, 0.96), rgba(6, 8, 12, 0.98));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 122, 61, 0.08);
+  transform: translateY(18px) scale(0.97);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.lightbox.is-open .lightbox__panel {
+  transform: none;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--ink);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+
+.lightbox__close:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(45, 226, 197, 0.1);
+}
+
+.lightbox__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.06em;
+  padding-right: 2.5rem;
+  color: var(--ink);
+}
+
+.lightbox__frame {
+  position: relative;
+  width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  background: #000;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.lightbox__frame video {
+  display: block;
+  width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: min(78vh, 720px);
+  object-fit: contain;
+  background: #000;
+}
+
+.bay__card,
+.project {
+  cursor: pointer;
+}
+
+.fx {
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1801,5 +1908,9 @@ body.has-motion [data-split].is-shown {
   body.has-motion [data-split],
   body.has-motion .process__step {
     opacity: 1 !important;
+  }
+
+  .lightbox__panel {
+    transform: none;
   }
 }
