@@ -160,6 +160,55 @@
     });
   });
 
+  /* ---------- Lazy video loader ---------- */
+  const videoLoadCache = new Map();
+
+  const ensureVideoSrc = (video) => {
+    if (!video) return Promise.resolve(null);
+    const src = video.getAttribute("data-src") || video.getAttribute("src");
+    if (!src) return Promise.resolve(video);
+    if (video.dataset.loaded === "1" && video.src) {
+      video.classList.add("is-ready");
+      return Promise.resolve(video);
+    }
+
+    const cacheKey = src;
+    if (videoLoadCache.has(cacheKey) && video.dataset.loading === "1") {
+      return videoLoadCache.get(cacheKey);
+    }
+
+    const task = new Promise((resolve) => {
+      const finish = () => {
+        video.dataset.loaded = "1";
+        video.dataset.loading = "0";
+        video.classList.add("is-ready");
+        resolve(video);
+      };
+
+      video.dataset.loading = "1";
+      if (!video.getAttribute("src")) video.src = src;
+
+      if (video.readyState >= 2) {
+        finish();
+        return;
+      }
+
+      video.addEventListener("loadeddata", finish, { once: true });
+      video.addEventListener(
+        "error",
+        () => {
+          video.dataset.loading = "0";
+          resolve(video);
+        },
+        { once: true }
+      );
+      video.load();
+    });
+
+    videoLoadCache.set(cacheKey, task);
+    return task;
+  };
+
   /* ---------- Lightbox player ---------- */
   const lightbox = document.querySelector("[data-lightbox]");
   const lightboxVideo = document.querySelector("[data-lightbox-video]");
@@ -168,13 +217,11 @@
 
   const getClipSrc = (root) => {
     if (!root) return "";
-    const explicit = root.getAttribute("data-video");
-    if (explicit) return explicit;
-    const videos = root.querySelectorAll("video");
-    const target = videos.length > 1 ? videos[videos.length - 1] : videos[0];
-    if (!target) return "";
-    const source = target.querySelector("source");
-    return source?.getAttribute("src") || target.currentSrc || "";
+    return (
+      root.getAttribute("data-video") ||
+      root.querySelector("video[data-src]")?.getAttribute("data-src") ||
+      ""
+    );
   };
 
   const getClipTitle = (root) => {
@@ -224,7 +271,9 @@
 
   const bindLightboxTrigger = (el) => {
     el.setAttribute("tabindex", el.getAttribute("tabindex") || "0");
-    el.setAttribute("role", el.getAttribute("role") || "button");
+    if (el.tagName !== "BUTTON") {
+      el.setAttribute("role", el.getAttribute("role") || "button");
+    }
     if (!el.getAttribute("data-cursor-text")) {
       el.setAttribute("data-cursor-text", "Play");
     }
@@ -246,29 +295,22 @@
     });
   };
 
-  /* ---------- Project scrub ---------- */
+  /* ---------- Project scrub (lazy on hover) ---------- */
   document.querySelectorAll("[data-project]").forEach((project) => {
     const video = project.querySelector("video");
     if (!video) return;
     bindLightboxTrigger(project);
 
-    const showPosterFrame = () => {
-      try {
-        if (video.readyState >= 1) video.currentTime = 0.12;
-      } catch (_) {}
-    };
-    video.addEventListener("loadedmetadata", showPosterFrame);
-    if (video.readyState >= 1) showPosterFrame();
-
-    const play = () => {
+    const play = async () => {
       if (lightbox?.classList.contains("is-open")) return;
       project.classList.add("is-active");
+      await ensureVideoSrc(video);
+      if (!project.classList.contains("is-active")) return;
       video.play().catch(() => {});
     };
     const pause = () => {
       project.classList.remove("is-active");
       video.pause();
-      showPosterFrame();
     };
 
     project.addEventListener("mouseenter", play);
@@ -278,6 +320,7 @@
     project.addEventListener("mousemove", (e) => {
       if (!video.duration || !project.classList.contains("is-active")) return;
       if (lightbox?.classList.contains("is-open")) return;
+      if (video.dataset.loaded !== "1") return;
       const rect = project.getBoundingClientRect();
       const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
       video.currentTime = ratio * video.duration;
@@ -289,9 +332,11 @@
     const video = card.querySelector("video");
     if (!video) return;
     bindLightboxTrigger(card);
-    card.addEventListener("mouseenter", () => {
+    card.addEventListener("mouseenter", async () => {
       if (lightbox?.classList.contains("is-open")) return;
       card.classList.add("is-active");
+      await ensureVideoSrc(video);
+      if (!card.classList.contains("is-active")) return;
       video.play().catch(() => {});
     });
     card.addEventListener("mouseleave", () => {
@@ -303,22 +348,20 @@
   /* ---------- AE transition demos ---------- */
   document.querySelectorAll("[data-fx]").forEach((fx) => {
     let timer;
-    const videos = fx.querySelectorAll("video");
+    const videos = [...fx.querySelectorAll("video")];
     bindLightboxTrigger(fx);
-    videos.forEach((video) => {
-      const showFrame = () => {
-        if (video.readyState >= 1) video.currentTime = 0.12;
-      };
-      video.addEventListener("loadedmetadata", showFrame);
-      if (video.readyState >= 1) showFrame();
-    });
-    const play = () => {
+
+    const play = async () => {
       if (lightbox?.classList.contains("is-open")) return;
+      await Promise.all(videos.map((video) => ensureVideoSrc(video)));
+      fx.classList.add("is-media-live");
       fx.classList.remove("is-playing");
       void fx.offsetWidth;
       fx.classList.add("is-playing");
       videos.forEach((video) => {
-        video.currentTime = 0;
+        try {
+          video.currentTime = 0;
+        } catch (_) {}
         video.play().catch(() => {});
       });
       clearTimeout(timer);
@@ -329,6 +372,35 @@
       videos.forEach((video) => video.pause());
     });
   });
+
+  /* ---------- Lazy load reel + about when near viewport ---------- */
+  const lazyAutoVideos = document.querySelectorAll(
+    ".reel__video[data-src], video[data-autoplay-lazy]"
+  );
+  if (lazyAutoVideos.length) {
+    const warm = (video) => {
+      ensureVideoSrc(video).then((el) => {
+        if (el?.hasAttribute("data-autoplay-lazy")) {
+          el.play().catch(() => {});
+        }
+      });
+    };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            warm(entry.target);
+            io.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "200px 0px", threshold: 0.01 }
+      );
+      lazyAutoVideos.forEach((video) => io.observe(video));
+    } else {
+      lazyAutoVideos.forEach(warm);
+    }
+  }
 
   /* ---------- Nav hide (class only — never leave GSAP transform on nav) ---------- */
   let lastY = 0;

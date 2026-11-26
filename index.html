@@ -139,10 +139,10 @@
               class="reel__video"
               controls
               playsinline
-              preload="metadata"
-            >
-              <source src="portfolio-videos/Corvette%20Cinematic.mp4" type="video/mp4" />
-            </video>
+              preload="none"
+              poster="portfolio-videos/posters/Corvette%20Cinematic.jpg"
+              data-src="portfolio-videos/Corvette%20Cinematic.mp4"
+            ></video>
             <div class="reel__hud">
               <span>CORVETTE_CINEMATIC</span>
               <span>CLIENT CUT</span>
@@ -175,14 +175,12 @@
       </div>
 
       <div class="transitions" data-reveal>
-        <button class="fx" type="button" data-fx="wipe" data-cursor-text="Wipe">
+        <button class="fx" type="button" data-fx="wipe" data-cursor-text="Wipe" data-video="portfolio-videos/Night%20Film.mp4">
           <div class="fx__stage">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Corvette%20Cinematic.mp4" type="video/mp4" />
-            </video>
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Night%20Film.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Corvette%20Cinematic.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <img class="media-poster media-poster--b" src="portfolio-videos/posters/Night%20Film.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Corvette%20Cinematic.mp4"></video>
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Night%20Film.mp4"></video>
             <div class="fx__mask"></div>
           </div>
           <div class="fx__meta">
@@ -191,14 +189,12 @@
           </div>
         </button>
 
-        <button class="fx" type="button" data-fx="zoom" data-cursor-text="Zoom">
+        <button class="fx" type="button" data-fx="zoom" data-cursor-text="Zoom" data-video="portfolio-videos/Drag%20race.mp4">
           <div class="fx__stage">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/lambo.mp4" type="video/mp4" />
-            </video>
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Drag%20race.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/lambo.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <img class="media-poster media-poster--b" src="portfolio-videos/posters/Drag%20race.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/lambo.mp4"></video>
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Drag%20race.mp4"></video>
             <div class="fx__mask"></div>
           </div>
           <div class="fx__meta">
@@ -207,14 +203,12 @@
           </div>
         </button>
 
-        <button class="fx" type="button" data-fx="glitch" data-cursor-text="Glitch">
+        <button class="fx" type="button" data-fx="glitch" data-cursor-text="Glitch" data-video="portfolio-videos/boxing%20edit.mp4">
           <div class="fx__stage">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/race%20edit.mp4" type="video/mp4" />
-            </video>
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/boxing%20edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/race%20edit.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <img class="media-poster media-poster--b" src="portfolio-videos/posters/boxing%20edit.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/race%20edit.mp4"></video>
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/boxing%20edit.mp4"></video>
             <div class="fx__mask"></div>
           </div>
           <div class="fx__meta">
@@ -223,14 +217,12 @@
           </div>
         </button>
 
-        <button class="fx" type="button" data-fx="leak" data-cursor-text="Leak">
+        <button class="fx" type="button" data-fx="leak" data-cursor-text="Leak" data-video="portfolio-videos/Rollers%20Edit.mp4">
           <div class="fx__stage">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Ferrari%20SFX.mp4" type="video/mp4" />
-            </video>
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Rollers%20Edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Ferrari%20SFX.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <img class="media-poster media-poster--b" src="portfolio-videos/posters/Rollers%20Edit.jpg" alt="" loading="lazy" decoding="async" width="900" height="560" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Ferrari%20SFX.mp4"></video>
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Rollers%20Edit.mp4"></video>
             <div class="fx__mask"></div>
           </div>
           <div class="fx__meta">
@@ -241,46 +233,41 @@
       </div>
 
       <div class="bay" data-reveal>
-        <article class="bay__card" data-bay>
-          <video muted loop playsinline preload="metadata">
-            <source src="portfolio-videos/Chevrolet%20transition.mp4" type="video/mp4" />
-          </video>
+        <article class="bay__card" data-bay data-video="portfolio-videos/Chevrolet%20transition.mp4">
+          <img class="media-poster" src="portfolio-videos/posters/Chevrolet%20transition.jpg" alt="" loading="lazy" decoding="async" width="960" height="720" />
+          <video muted loop playsinline preload="none" data-src="portfolio-videos/Chevrolet%20transition.mp4"></video>
           <div class="bay__label">
             <span>01</span>
             <p>Chevrolet · AE transition</p>
           </div>
         </article>
-        <article class="bay__card" data-bay>
-          <video muted loop playsinline preload="metadata">
-            <source src="portfolio-videos/Ferrari%20SFX.mp4" type="video/mp4" />
-          </video>
+        <article class="bay__card" data-bay data-video="portfolio-videos/Ferrari%20SFX.mp4">
+          <img class="media-poster" src="portfolio-videos/posters/Ferrari%20SFX.jpg" alt="" loading="lazy" decoding="async" width="960" height="720" />
+          <video muted loop playsinline preload="none" data-src="portfolio-videos/Ferrari%20SFX.mp4"></video>
           <div class="bay__label">
             <span>02</span>
             <p>Ferrari · SFX cut</p>
           </div>
         </article>
-        <article class="bay__card bay__card--wide" data-bay>
-          <video muted loop playsinline preload="metadata">
-            <source src="portfolio-videos/lyrics%20style.mp4" type="video/mp4" />
-          </video>
+        <article class="bay__card bay__card--wide" data-bay data-video="portfolio-videos/lyrics%20style.mp4">
+          <img class="media-poster" src="portfolio-videos/posters/lyrics%20style.jpg" alt="" loading="lazy" decoding="async" width="960" height="720" />
+          <video muted loop playsinline preload="none" data-src="portfolio-videos/lyrics%20style.mp4"></video>
           <div class="bay__label">
             <span>03</span>
             <p>Lyrics style · motion graphics</p>
           </div>
         </article>
-        <article class="bay__card" data-bay>
-          <video muted loop playsinline preload="metadata">
-            <source src="portfolio-videos/Insta%20360%20Edit.mp4" type="video/mp4" />
-          </video>
+        <article class="bay__card" data-bay data-video="portfolio-videos/Insta%20360%20Edit.mp4">
+          <img class="media-poster" src="portfolio-videos/posters/Insta%20360%20Edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="720" />
+          <video muted loop playsinline preload="none" data-src="portfolio-videos/Insta%20360%20Edit.mp4"></video>
           <div class="bay__label">
             <span>04</span>
             <p>Insta 360 · immersive edit</p>
           </div>
         </article>
-        <article class="bay__card" data-bay>
-          <video muted loop playsinline preload="metadata">
-            <source src="portfolio-videos/clothing%20brand%20Edit.mp4" type="video/mp4" />
-          </video>
+        <article class="bay__card" data-bay data-video="portfolio-videos/clothing%20brand%20Edit.mp4">
+          <img class="media-poster" src="portfolio-videos/posters/clothing%20brand%20Edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="720" />
+          <video muted loop playsinline preload="none" data-src="portfolio-videos/clothing%20brand%20Edit.mp4"></video>
           <div class="bay__label">
             <span>05</span>
             <p>Clothing brand · commercial</p>
@@ -331,11 +318,10 @@
       </div>
 
       <div class="work__track" data-work-grid>
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Night%20Film.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Night%20Film.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Night%20Film.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Night%20Film.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -345,11 +331,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/lambo.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/lambo.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/lambo.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/lambo.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -359,11 +344,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Audi%20Edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Audi%20Edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Audi%20Edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Audi%20Edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -373,11 +357,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Ferrari%20SFX.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Ferrari%20SFX.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Ferrari%20SFX.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Ferrari%20SFX.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -387,11 +370,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Corvette%20Cinematic.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Corvette%20Cinematic.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Corvette%20Cinematic.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Corvette%20Cinematic.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -401,11 +383,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Drag%20race.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Drag%20race.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Drag%20race.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Drag%20race.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -415,11 +396,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Defender%20PPF.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Defender%20PPF.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Defender%20PPF.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Defender%20PPF.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -429,11 +409,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Rollers%20Edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Rollers%20Edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Rollers%20Edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Rollers%20Edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -443,11 +422,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/race%20edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/race%20edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/race%20edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/race%20edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -457,11 +435,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/race%20track%20edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/race%20track%20edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/race%20track%20edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/race%20track%20edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -471,11 +448,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Chevrolet%20transition.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Chevrolet%20transition.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Chevrolet%20transition.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Chevrolet%20transition.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -485,11 +461,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Insta%20360%20Edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Insta%20360%20Edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Insta%20360%20Edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Insta%20360%20Edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -499,11 +474,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Golf%20Day%20Edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Golf%20Day%20Edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Golf%20Day%20Edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Golf%20Day%20Edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -513,11 +487,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/Event%20recap.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/Event%20recap.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Event%20recap.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Event%20recap.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -527,11 +500,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/boxing%20edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/boxing%20edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/boxing%20edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/boxing%20edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -541,11 +513,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/clothing%20brand%20Edit.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/clothing%20brand%20Edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/clothing%20brand%20Edit.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/clothing%20brand%20Edit.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -555,11 +526,10 @@
           </div>
         </article>
 
-        <article class="project" data-project>
+        <article class="project" data-project data-video="portfolio-videos/lyrics%20style.mp4">
           <div class="project__media">
-            <video muted loop playsinline preload="metadata">
-              <source src="portfolio-videos/lyrics%20style.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/lyrics%20style.jpg" alt="" loading="lazy" decoding="async" width="960" height="1200" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/lyrics%20style.mp4"></video>
             <div class="project__overlay"><span class="project__play">Play</span></div>
           </div>
           <div class="project__info">
@@ -770,9 +740,8 @@
             <span class="stat__label">Years editing</span>
           </div>
           <div class="about__portrait" data-tilt>
-            <video muted loop playsinline autoplay preload="metadata">
-              <source src="portfolio-videos/Audi%20Edit.mp4" type="video/mp4" />
-            </video>
+            <img class="media-poster" src="portfolio-videos/posters/Audi%20Edit.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" />
+            <video muted loop playsinline preload="none" data-src="portfolio-videos/Audi%20Edit.mp4" data-autoplay-lazy></video>
             <div class="about__portrait-tag">TAMIM CHOWDHURY · EDITOR</div>
           </div>
         </div>
