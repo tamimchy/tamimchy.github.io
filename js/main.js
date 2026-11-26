@@ -212,14 +212,29 @@
   /* ---------- AE transition demos ---------- */
   document.querySelectorAll("[data-fx]").forEach((fx) => {
     let timer;
+    const videos = fx.querySelectorAll("video");
+    videos.forEach((video) => {
+      const showFrame = () => {
+        if (video.readyState >= 1) video.currentTime = 0.12;
+      };
+      video.addEventListener("loadedmetadata", showFrame);
+      if (video.readyState >= 1) showFrame();
+    });
     const play = () => {
       fx.classList.remove("is-playing");
       void fx.offsetWidth;
       fx.classList.add("is-playing");
+      videos.forEach((video) => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
       clearTimeout(timer);
       timer = setTimeout(() => fx.classList.remove("is-playing"), 1000);
     };
     fx.addEventListener("mouseenter", play);
+    fx.addEventListener("mouseleave", () => {
+      videos.forEach((video) => video.pause());
+    });
     fx.addEventListener("click", play);
   });
 
@@ -725,11 +740,11 @@
       },
     });
 
-    /* ---------- About image zoom scrub ---------- */
-    const portraitImg = document.querySelector(".about__portrait img");
-    if (portraitImg) {
+    /* ---------- About media zoom scrub ---------- */
+    const portraitMedia = document.querySelector(".about__portrait video");
+    if (portraitMedia) {
       gsap.fromTo(
-        portraitImg,
+        portraitMedia,
         { scale: 1.2, filter: "grayscale(0.6)" },
         {
           scale: 1,

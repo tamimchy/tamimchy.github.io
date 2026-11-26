@@ -975,7 +975,7 @@ body.has-motion .fx:not(.is-revealed) {
   background: #000;
 }
 
-.fx__stage img {
+.fx__stage video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -983,7 +983,7 @@ body.has-motion .fx:not(.is-revealed) {
   object-fit: cover;
 }
 
-.fx__stage img:nth-child(2) {
+.fx__stage video:nth-child(2) {
   opacity: 0;
 }
 
@@ -1015,13 +1015,13 @@ body.has-motion .fx:not(.is-revealed) {
 }
 
 /* Transition variants */
-.fx[data-fx="wipe"].is-playing .fx__stage img:nth-child(2) {
+.fx[data-fx="wipe"].is-playing .fx__stage video:nth-child(2) {
   opacity: 1;
   clip-path: inset(0 0 0 0);
   animation: fxWipe 0.85s var(--ease-out) forwards;
 }
 
-.fx[data-fx="wipe"] .fx__stage img:nth-child(2) {
+.fx[data-fx="wipe"] .fx__stage video:nth-child(2) {
   clip-path: inset(0 100% 0 0);
   opacity: 1;
 }
@@ -1031,11 +1031,11 @@ body.has-motion .fx:not(.is-revealed) {
   to { clip-path: inset(0 0 0 0); }
 }
 
-.fx[data-fx="zoom"].is-playing .fx__stage img:first-child {
+.fx[data-fx="zoom"].is-playing .fx__stage video:first-child {
   animation: fxZoomOut 0.7s var(--ease-out) forwards;
 }
 
-.fx[data-fx="zoom"].is-playing .fx__stage img:nth-child(2) {
+.fx[data-fx="zoom"].is-playing .fx__stage video:nth-child(2) {
   opacity: 1;
   animation: fxZoomIn 0.7s var(--ease-out) forwards;
 }
@@ -1049,7 +1049,7 @@ body.has-motion .fx:not(.is-revealed) {
   to { transform: scale(1); opacity: 1; }
 }
 
-.fx[data-fx="glitch"].is-playing .fx__stage img:nth-child(2) {
+.fx[data-fx="glitch"].is-playing .fx__stage video:nth-child(2) {
   opacity: 1;
   animation: fxGlitch 0.7s steps(2, end) forwards;
 }
@@ -1075,7 +1075,7 @@ body.has-motion .fx:not(.is-revealed) {
   to { transform: translateY(30%); opacity: 0; }
 }
 
-.fx[data-fx="leak"].is-playing .fx__stage img:nth-child(2) {
+.fx[data-fx="leak"].is-playing .fx__stage video:nth-child(2) {
   opacity: 1;
   animation: fxFade 0.9s ease forwards;
 }
@@ -1370,7 +1370,6 @@ body.has-motion .project:not(.is-revealed) .project__info {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(45, 226, 197, 0.1);
 }
 
-.project__media img,
 .project__media video {
   position: absolute;
   inset: 0;
@@ -1529,7 +1528,7 @@ body.has-motion .stat:not(.is-shown) {
   transition: transform 0.2s ease-out;
 }
 
-.about__portrait img {
+.about__portrait video {
   width: 100%;
   height: 100%;
   object-fit: cover;
