@@ -138,6 +138,8 @@
             <video
               class="reel__video"
               controls
+              controlslist="nodownload"
+              disablepictureinpicture
               playsinline
               preload="none"
               poster="portfolio-videos/posters/Corvette%20Cinematic.jpg"
@@ -792,7 +794,13 @@
       </button>
       <p class="lightbox__title" id="lightbox-title" data-lightbox-title></p>
       <div class="lightbox__frame">
-        <video data-lightbox-video controls playsinline></video>
+        <video
+          data-lightbox-video
+          controls
+          controlslist="nodownload"
+          disablepictureinpicture
+          playsinline
+        ></video>
       </div>
     </div>
   </div>

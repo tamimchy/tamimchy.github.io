@@ -252,6 +252,8 @@
     if (!lightbox || !lightboxVideo || !src) return;
     lightboxLastFocus = document.activeElement;
     if (lightboxTitle) lightboxTitle.textContent = title || "Portfolio cut";
+    lightboxVideo.setAttribute("controlsList", "nodownload");
+    lightboxVideo.setAttribute("disablePictureInPicture", "");
     lightboxVideo.src = src;
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
@@ -260,6 +262,11 @@
     lightboxVideo.play().catch(() => {});
     lightbox.querySelector("[data-lightbox-close]")?.focus({ preventScroll: true });
   };
+
+  /* Hide native download entry where browsers still expose it via context menu */
+  document.querySelectorAll("video[controls], video[data-lightbox-video]").forEach((video) => {
+    video.addEventListener("contextmenu", (e) => e.preventDefault());
+  });
 
   lightbox?.querySelectorAll("[data-lightbox-close]").forEach((el) => {
     el.addEventListener("click", closeLightbox);
