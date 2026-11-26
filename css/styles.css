@@ -744,9 +744,164 @@ body:not(.has-motion) .section-eyebrow::before {
 .about,
 .contact,
 .process,
-.craft {
+.craft,
+.reviews {
   position: relative;
   padding: clamp(4.5rem, 10vw, 8rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ---- Reviews / Fiverr ---- */
+.reviews__summary {
+  display: grid;
+  grid-template-columns: auto 1.4fr auto;
+  gap: 1.5rem 2rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(140deg, rgba(45, 226, 197, 0.06), transparent 55%);
+}
+
+.reviews__score-num {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cyan);
+}
+
+.reviews__stars {
+  color: var(--amber);
+  letter-spacing: 0.12em;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.reviews__score p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.reviews__bars {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.reviews__bars li {
+  display: grid;
+  grid-template-columns: 2rem 1fr 1.5rem;
+  gap: 0.65rem;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.reviews__bars i {
+  display: block;
+  height: 4px;
+  background: rgba(232, 238, 247, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.reviews__bars i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: var(--w, 0%);
+  background: linear-gradient(90deg, var(--cyan), var(--amber));
+}
+
+.reviews__metrics {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.reviews__metrics li {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.reviews__metrics strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--cyan);
+}
+
+.reviews__metrics span {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.review {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s, transform 0.35s var(--ease-out);
+}
+
+.review:hover {
+  border-color: rgba(45, 226, 197, 0.4);
+  transform: translateY(-3px);
+}
+
+body.has-motion .review:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.review__top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.review__avatar {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.review__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.review__meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.review__stars {
+  color: var(--amber);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.review__body {
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.reviews__cta {
+  margin-top: 2rem;
+  text-align: center;
 }
 
 /* ---- Craft / AE transitions ---- */
@@ -1226,17 +1381,12 @@ body.has-motion .project:not(.is-revealed) .project__info {
 }
 
 .project__media video {
-  opacity: 0;
-}
-
-.project.is-active .project__media video,
-.project:hover .project__media video {
   opacity: 1;
 }
 
-.project:hover .project__media img,
-.project.is-active .project__media img {
-  transform: scale(1.06);
+.project:hover .project__media video,
+.project.is-active .project__media video {
+  transform: scale(1.04);
 }
 
 .project__overlay {
@@ -1595,6 +1745,14 @@ body.has-motion [data-split].is-shown {
 
   .work__track {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reviews__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews__grid {
+    grid-template-columns: 1fr;
   }
 }
 

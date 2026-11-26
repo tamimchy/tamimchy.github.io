@@ -165,6 +165,14 @@
     const video = project.querySelector("video");
     if (!video) return;
 
+    const showPosterFrame = () => {
+      try {
+        if (video.readyState >= 1) video.currentTime = 0.12;
+      } catch (_) {}
+    };
+    video.addEventListener("loadedmetadata", showPosterFrame);
+    if (video.readyState >= 1) showPosterFrame();
+
     const play = () => {
       project.classList.add("is-active");
       video.play().catch(() => {});
@@ -172,7 +180,7 @@
     const pause = () => {
       project.classList.remove("is-active");
       video.pause();
-      video.currentTime = 0;
+      showPosterFrame();
     };
 
     project.addEventListener("mouseenter", play);
@@ -180,7 +188,7 @@
     project.addEventListener("focusin", play);
     project.addEventListener("focusout", pause);
     project.addEventListener("mousemove", (e) => {
-      if (!video.duration) return;
+      if (!video.duration || !project.classList.contains("is-active")) return;
       const rect = project.getBoundingClientRect();
       const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
       video.currentTime = ratio * video.duration;
@@ -302,7 +310,7 @@
   const forceShowAll = () => {
     document
       .querySelectorAll(
-        "[data-reveal], [data-split], [data-process-step], [data-chip], [data-project], [data-bay], .fx, .stat, .section-eyebrow"
+        "[data-reveal], [data-split], [data-process-step], [data-chip], [data-project], [data-bay], [data-review], .fx, .stat, .section-eyebrow"
       )
       .forEach((el) => {
         markShown(el);
@@ -533,6 +541,25 @@
       });
     }
 
+    /* ---------- Fiverr reviews cascade ---------- */
+    gsap.utils.toArray("[data-review]").forEach((card, i) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top 92%",
+        once: true,
+        onEnter: () => {
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            delay: (i % 2) * 0.08,
+            ease: "power3.out",
+            onStart: () => card.classList.add("is-revealed"),
+          });
+        },
+      });
+    });
+
     /* ---------- Process line scrub ---------- */
     gsap.to("[data-process-line]", {
       scaleX: 1,
@@ -600,7 +627,7 @@
 
     /* ---------- Montages clip reveals + image parallax ---------- */
     gsap.utils.toArray("[data-project]").forEach((project) => {
-      const media = project.querySelector(".project__media img");
+      const media = project.querySelector(".project__media video");
 
       ScrollTrigger.create({
         trigger: project,
@@ -621,7 +648,7 @@
       if (media) {
         gsap.fromTo(
           media,
-          { scale: 1.18 },
+          { scale: 1.12 },
           {
             scale: 1,
             ease: "none",

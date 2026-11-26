@@ -36,7 +36,9 @@ If the site is on a project path (not a custom domain / user site), links alread
 | Showreel | `#reel` video `src` / `poster` |
 | Colors | CSS variables in `css/styles.css` (`:root`) |
 
-Dummy media currently comes from Unsplash and Google’s sample video bucket — replace with real cuts when ready.
+Client videos live in `portfolio-videos/`. Hero background still uses a stock loop; showreel, craft bay, and montages use Tamim’s real edits.
+
+**Note:** Some files are very large (100MB+). GitHub Pages / git may reject them without Git LFS or compression before deploy.
 
 ## Stack
 
